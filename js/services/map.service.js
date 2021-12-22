@@ -2,9 +2,15 @@ export const mapService = {
     initMap,
     addMarker,
     panTo,
+    getMap
 };
 
 var gMap;
+
+function getMap(){
+    console.log(gMap);
+    return gMap
+}
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
@@ -12,9 +18,10 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
         console.log('google available');
         gMap = new google.maps.Map(document.querySelector('#map'), {
             center: { lat, lng },
-            zoom: 15,
+            zoom: 15
         });
-        console.log('Map!', gMap);
+        console.log('gMap on 23!', gMap);
+        return gMap;
     });
 }
 
