@@ -35,35 +35,35 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
 
 function panCurrLocation() {
     infoWindow = new google.maps.InfoWindow();
-    // const locationButton = document.createElement('button');
-    // locationButton.innerHTML = `<i class="far fa-compass"></i>`;
-    // locationButton.classList.add('custom-map-control-button');
-    // gMap.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-    // locationButton.addEventListener('click', () => {
-    //     if (navigator.geolocation) {
-    //         navigator.geolocation.getCurrentPosition(
-    //             (position) => {
-    //                 const pos = {
-    //                     lat: position.coords.latitude,
-    //                     lng: position.coords.longitude,
-    //                 };
-    //                 infoWindow.setPosition(pos);
-    //                 infoWindow.setContent('Location found.');
-    //                 infoWindow.open(gMap);
-    //                 console.log('gMap:', gMap);
-    //                 console.log(' infoWindow.open(gMap):', infoWindow.open(gMap));
+    const locationButton = document.createElement('button');
+    locationButton.innerHTML = `<i class="far fa-compass"></i>`;
+    locationButton.classList.add('custom-map-control-button');
+    gMap.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+    locationButton.addEventListener('click', () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                    };
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent('Location found.');
+                    infoWindow.open(gMap);
+                    console.log('gMap:', gMap);
+                    console.log(' infoWindow.open(gMap):', infoWindow.open(gMap));
 
-    //                 gMap.setCenter(pos);
-    //             },
-    //             () => {
-    //                 handleLocationError(true, infoWindow, gMap.getCenter());
-    //             }
-    //         );
-    //     } else {
-    //         // Browser doesn't support Geolocation
-    //         handleLocationError(false, infoWindow, gMap.getCenter());
-    //     }
-    // });
+                    gMap.setCenter(pos);
+                },
+                () => {
+                    handleLocationError(true, infoWindow, gMap.getCenter());
+                }
+            );
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, gMap.getCenter());
+        }
+    });
     gMap.addListener('click', (mapsMouseEvent) => {
         // var locName = gName;
         // var locName = prompt('Enter Location Name');
