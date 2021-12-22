@@ -1,0 +1,33 @@
+input {
+  margin: 5px;
+}
+.modal label {
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.modal button {
+  margin-inline: 70px;
+  cursor: pointer;
+  border: none;
+  background-color: black;
+  color: wheat;
+  font-size: 1rem;
+}
+
+.modal p {
+  text-align: center;
+  font-family: sans-serif;
+  margin-top: 20px;
+}
+
+.modal {
+    background-color: rgba(255, 255, 255, 0.835);
+    position: absolute;
+    left: 20px;
+    top: 300px;
+    height: 168px;
+    width: 191px;
+    border: 2px solid black;
+}

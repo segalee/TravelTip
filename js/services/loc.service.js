@@ -1,5 +1,6 @@
 export const locService = {
   getLocs,
+  saveLocsToStorage,
 };
 
 import { storageService } from "./localStorage.service.js";
@@ -29,7 +30,15 @@ function getLocs() {
   });
 }
 
-function saveLocsToStorage() {
+function saveLocsToStorage(locName, newPos) {
+    console.log('newPos', newPos);
+    console.log('newPos.lng', newPos.lng);
+  locs.push({
+    id: makeId(),
+    name: locName,
+    latlng: newPos,
+    createAt: Date.now(),
+  });
   storageService.save(STORAGE_KEY, locs);
 }
 function makeId(length = 6) {
@@ -41,3 +50,5 @@ function makeId(length = 6) {
   }
   return txt;
 }
+
+
