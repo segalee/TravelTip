@@ -52,7 +52,6 @@ function panCurrLocation() {
                     infoWindow.open(gMap);
                     console.log('gMap:', gMap);
                     console.log(' infoWindow.open(gMap):', infoWindow.open(gMap));
-
                     gMap.setCenter(pos);
                 },
                 () => {
@@ -60,16 +59,11 @@ function panCurrLocation() {
                 }
             );
         } else {
-            // Browser doesn't support Geolocation
             handleLocationError(false, infoWindow, gMap.getCenter());
         }
     });
     gMap.addListener('click', (mapsMouseEvent) => {
-        // var locName = gName;
-        // var locName = prompt('Enter Location Name');
-        // Close the current InfoWindow.
         infoWindow.close();
-        // Create a new InfoWindow.
         infoWindow = new google.maps.InfoWindow({
             position: mapsMouseEvent.latLng,
         });
