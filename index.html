@@ -8,12 +8,27 @@
 </head>
 
 <body>
-    <h1>TravelTip Starter</h1>
+    <div class="header-container">
+        <h1>TravelTip Starter</h1>
+        <form onsubmit="onSearchLocation(this)">
+            <label for="location-input">Choose a location:</label>
+            <input list="locations" id="location-input" name="location-input" />
+            <datalist id="locations">
+                <option value="home">Home</option>
+                <option value="work">Work</option>
+                <option value="beach">Nice Beach</option>
+                <option value="garden">Nice Garden</option>
+            </datalist>
+            <button>GO</button>
+        </form>
+
+
+        <button onclick="onAddMarker()" class="btn-add-marker">Add Marker Speific Location</button>
+        <button onclick="onGetUserPos()" class="btn-user-pos">Get User Position</button>
+        <button onclick="onGetLocs()" class="btn-get-locs">Get Locations</button>
+        <button onclick="onPanTo()" class="btn-pan">Pan Map to Tokyo</button>
+    </div>
     <div id="map" style="width: 100%; height: 400px;"></div>
-    <button onclick="onAddMarker()" class="btn-add-marker">Add Marker Speific Location</button>
-    <button onclick="onGetUserPos()" class="btn-user-pos">Get User Position</button>
-    <button onclick="onGetLocs()" class="btn-get-locs">Get Locations</button>
-    <button onclick="onPanTo()" class="btn-pan">Pan Map to Tokyo</button>
 
     <p>You are at: <span class="user-pos"></span></p>
     <p>Locations: <span class="locs"></span></p>
