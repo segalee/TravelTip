@@ -11,8 +11,7 @@
     <div class="header-container">
         <h1>TravelTip Starter</h1>
         <form onsubmit="onSearchLocation(this)">
-            <label for="location-input">Choose a location:</label>
-            <input list="locations" id="location-input" name="location-input" />
+            <input list="locations" id="location-input" name="location-input" placeholder="Enter Location" />
             <datalist id="locations">
                 <option value="home">Home</option>
                 <option value="work">Work</option>
@@ -21,17 +20,28 @@
             </datalist>
             <button>GO</button>
         </form>
-
+        <button onclick="onGetUserPos()" class="btn-user-pos">My Location</button>
+        <p>Location: <span class="user-pos"></span></p>
+        <button>Copy Location</button>
+        <button onclick="onGetLocs()" class="btn-get-locs">Get Locations</button>
+        <p>Locations: <span class="locs"></span></p>
 
         <button onclick="onAddMarker()" class="btn-add-marker">Add Marker Speific Location</button>
-        <button onclick="onGetUserPos()" class="btn-user-pos">Get User Position</button>
-        <button onclick="onGetLocs()" class="btn-get-locs">Get Locations</button>
         <button onclick="onPanTo()" class="btn-pan">Pan Map to Tokyo</button>
     </div>
     <div id="map" style="width: 100%; height: 400px;"></div>
 
-    <p>You are at: <span class="user-pos"></span></p>
-    <p>Locations: <span class="locs"></span></p>
+    <table border="2">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Lat</th>
+                <th>Lang</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 
 
     <script type="module" src="js/app.controller.js"></script>
