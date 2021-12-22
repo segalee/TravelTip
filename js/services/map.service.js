@@ -125,8 +125,8 @@ function submitModal(elForm, ev) {
   console.log("elForm", elForm);
   ev.preventDefault();
   const name = elForm.querySelector("[name=location-name]").value;
-  const locName = elForm.querySelector("p span").innerText;
-  onSaveLocation(name, locName);
+  const newPos = elForm.querySelector("p span").innerText;
+  onSaveLocation(name, newPos);
   renderLocationInfo();
   elForm.querySelector("[name=location-name]").value = "";
   document.querySelector(".modal").style.display = "none";
