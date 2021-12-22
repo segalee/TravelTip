@@ -1,6 +1,11 @@
 import { storageService } from './localStorage.service.js';
 export const locService = {
+<<<<<<< HEAD
     getLocs,
+=======
+  getLocs,
+  saveLocsToStorage,
+>>>>>>> 20398dc9a5611e27b0ce90e440d2891db0399c6b
 };
 
 import { storageService } from './localStorage.service.js';
@@ -33,11 +38,25 @@ function getLocs() {
     });
 }
 
+<<<<<<< HEAD
 function saveLocsToStorage() {
     storageService.save(STORAGE_KEY, locs);
+=======
+function saveLocsToStorage(locName, newPos) {
+    console.log('newPos', newPos);
+    console.log('newPos.lng', newPos.lng);
+  locs.push({
+    id: makeId(),
+    name: locName,
+    latlng: newPos,
+    createAt: Date.now(),
+  });
+  storageService.save(STORAGE_KEY, locs);
+>>>>>>> 20398dc9a5611e27b0ce90e440d2891db0399c6b
 }
 
 function makeId(length = 6) {
+<<<<<<< HEAD
     const possible =
         'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var txt = '';
@@ -46,3 +65,15 @@ function makeId(length = 6) {
     }
     return txt;
 }
+=======
+  const possible =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var txt = "";
+  for (var i = 0; i < length; i++) {
+    txt += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return txt;
+}
+
+
+>>>>>>> 20398dc9a5611e27b0ce90e440d2891db0399c6b

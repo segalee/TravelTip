@@ -8,6 +8,7 @@ window.onPanTo = onPanTo;
 window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
 
+
 function onInit() {
     mapService
         .initMap()
@@ -84,3 +85,4 @@ function onPanTo() {
     console.log('Panning the Map');
     mapService.panTo(35.6895, 139.6917);
 }
+
