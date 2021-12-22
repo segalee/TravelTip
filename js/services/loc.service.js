@@ -2,9 +2,9 @@ import { storageService } from './localStorage.service.js';
 export const locService = {
     getLocs,
     saveLocsToStorage,
+    removeLocation,
 };
 
-import { storageService } from './localStorage.service.js';
 const STORAGE_KEY = 'locsDB';
 const locs = [{
         id: makeId(),
@@ -22,10 +22,6 @@ const locs = [{
     },
 ];
 
-function saveLocsToStorage() {
-    storageService.save(KEY_STORAGE, locs);
-}
-
 function getLocs() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -34,13 +30,12 @@ function getLocs() {
     });
 }
 
-function saveLocsToStorage(locName, newPos) {
-    console.log('newPos', newPos);
-    console.log('newPos.lng', newPos.lng);
+function saveLocsToStorage(name, lat, lng) {
     locs.push({
         id: makeId(),
-        name: locName,
-        latlng: newPos,
+        name,
+        lat,
+        lng,
         createAt: Date.now(),
     });
     storageService.save(STORAGE_KEY, locs);
@@ -54,4 +49,12 @@ function makeId(length = 6) {
         txt += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return txt;
+}
+
+function removeLocation(locationId) {
+    var removeIdx = locs.findIndex((location) => {
+        return locationId === location.id;
+    });
+    locs.splice(removeIdx, 1);
+    storageService.save(STORAGE_KEY, locs);
 }

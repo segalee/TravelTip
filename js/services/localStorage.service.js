@@ -1,8 +1,8 @@
 export const storageService = {
     save: saveToStorage,
     load: loadFromStorage,
-    removeFromStorage,
-    clearStorage
+    remove: removeFromStorage,
+    clear: clearStorage,
 };
 
 function saveToStorage(key, val) {
@@ -17,6 +17,7 @@ function loadFromStorage(key) {
 function removeFromStorage(key) {
     localStorage.removeItem(key);
 }
+
 function clearStorage() {
     localStorage.clear();
 }

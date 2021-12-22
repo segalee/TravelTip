@@ -1,13 +1,11 @@
 import { locService } from './services/loc.service.js';
 import { mapService } from './services/map.service.js';
 // import { storageService } from './services/localStorage.service.js';
-
 window.onload = onInit;
 window.onAddMarker = onAddMarker;
 window.onPanTo = onPanTo;
 window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
-
 
 function onInit() {
     mapService
@@ -24,6 +22,8 @@ function getPosition() {
         navigator.geolocation.getCurrentPosition(resolve, reject);
     });
 }
+
+function renderLocationTable() {}
 
 // function onPanMyLocation() {
 //     var map = mapService.initMap().then((res) => {
@@ -85,4 +85,3 @@ function onPanTo() {
     console.log('Panning the Map');
     mapService.panTo(35.6895, 139.6917);
 }
-
