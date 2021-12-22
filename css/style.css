@@ -79,3 +79,12 @@ td, th{
     text-align: center;
     padding: 5px
 }
+
+form{
+    margin-block-start: 20px;
+}
+
+button:hover{
+    background-color: darkgray;
+}
+

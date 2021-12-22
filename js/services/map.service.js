@@ -52,7 +52,7 @@ function panCurrLocation() {
             lng: position.coords.longitude,
           };
           infoWindow.setPosition(pos);
-          infoWindow.setContent("Location found.");
+          infoWindow.setContent("My Location");
           infoWindow.open(gMap);
           console.log("gMap:", gMap);
           console.log(" infoWindow.open(gMap):", infoWindow.open(gMap));
