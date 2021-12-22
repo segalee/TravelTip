@@ -36,7 +36,7 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
 function panCurrLocation() {
     infoWindow = new google.maps.InfoWindow();
     const locationButton = document.createElement('button');
-    locationButton.innerHTML = `<i class="far fa-compass"></i>`;
+    locationButton.innerHTML = `pan`;
     locationButton.classList.add('custom-map-control-button');
     gMap.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
     locationButton.addEventListener('click', () => {
