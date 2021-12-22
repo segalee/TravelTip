@@ -101,7 +101,7 @@ function panTo(lat, lng) {
 
   gMap.panTo(laLatLng);
 }
-
+//comment
 function _connectGoogleApi() {
   if (window.google) return Promise.resolve();
   const API_KEY = "AIzaSyBT1I0vf81TipqrRQ6ZrCfBKK20g1iG5ms"; //DONE: Enter your API Key
