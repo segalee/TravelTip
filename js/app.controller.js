@@ -8,10 +8,11 @@ window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
 
 function onInit() {
+  
   mapService
     .initMap()
     .then(() => {
-      console.log("Map is ready");
+    //   console.log("Map is ready");
     })
     .catch(() => console.log("Error: cannot init map"));
   onPanMyLocation();
@@ -19,34 +20,42 @@ function onInit() {
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
 function getPosition() {
-  console.log("Getting Pos");
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(resolve, reject);
   });
 }
 
 function onPanMyLocation() {
-  const map = mapService.getMap();
-  console.log(" map", map);
-  console.log(" mapService", mapService);
-  map.addListener("click", (mapsMouseEvent) => {
-    // var locName = gName;
-    // var locName = prompt('Enter Location Name');
-    // Close the current InfoWindow.
-    infoWindow.close();
-    // Create a new InfoWindow.
-    infoWindow = new google.maps.InfoWindow({
-      position: mapsMouseEvent.latLng,
-    });
-    var newPos =
-      (" latlang", JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2));
+    var map = mapService.initMap().then(res=> {
+console.log(' res.data.map',  res.data.map);
+    return   res.data.map
+    })
+  const gMap =  map.then(map =>{
+      console.log('map', map);
+      map.addListener("click", (mapsMouseEvent) => {
+        // var locName = gName;
+        // var locName = prompt('Enter Location Name');
+        // Close the current InfoWindow.
+        infoWindow.close();
+        // Create a new InfoWindow.
+        infoWindow = new google.maps.InfoWindow({
+          position: mapsMouseEvent.latLng,
+        });
+        var newPos =
+          (" latlang", JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2));
+    
+        infoWindow.setContent(
+          JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+        );
+        infoWindow.open(map);
+        openModal(newPos);
+      });
+      return map
+    })
 
-    infoWindow.setContent(
-      JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-    );
-    infoWindow.open(map);
-    openModal(newPos);
-  });
+//   const map = mapService.getMap();
+
+ 
 }
 
 function onAddMarker() {

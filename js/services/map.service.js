@@ -1,55 +1,57 @@
 export const mapService = {
-    initMap,
-    addMarker,
-    panTo,
-    getMap
+  initMap,
+  addMarker,
+  panTo,
+  getMap,
+  gMap,
 };
 
 var gMap;
-
-function getMap(){
-    console.log(gMap);
-    return gMap
-}
-
+var infoWindow;
 function initMap(lat = 32.0749831, lng = 34.9120554) {
-    console.log('InitMap');
-    return _connectGoogleApi().then(() => {
-        console.log('google available');
-        gMap = new google.maps.Map(document.querySelector('#map'), {
-            center: { lat, lng },
-            zoom: 15
-        });
-        console.log('gMap on 23!', gMap);
-        return gMap;
+  return _connectGoogleApi().then(() => {
+    // console.log('google available');
+    infoWindow = new google.maps.InfoWindow();
+    gMap = new google.maps.Map(document.querySelector("#map"), {
+      center: { lat, lng },
+      zoom: 15,
     });
+    return {
+      gMap,
+      infoWindow,
+    };
+  });
 }
 
+function getMap() {
+  console.log("line11 gMap", gMap);
+  return gMap;
+}
 function addMarker(loc) {
-    var marker = new google.maps.Marker({
-        position: loc,
-        map: gMap,
-        title: 'Hello World!',
-    });
-    return marker;
+  var marker = new google.maps.Marker({
+    position: loc,
+    map: gMap,
+    title: "Hello World!",
+  });
+  return marker;
 }
 
 function panTo(lat, lng) {
-    var laLatLng = new google.maps.LatLng(lat, lng);
+  var laLatLng = new google.maps.LatLng(lat, lng);
 
-    gMap.panTo(laLatLng);
+  gMap.panTo(laLatLng);
 }
 
 function _connectGoogleApi() {
-    if (window.google) return Promise.resolve();
-    const API_KEY = 'AIzaSyBT1I0vf81TipqrRQ6ZrCfBKK20g1iG5ms'; //DONE: Enter your API Key
-    var elGoogleApi = document.createElement('script');
-    elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`;
-    elGoogleApi.async = true;
-    document.body.append(elGoogleApi);
+  if (window.google) return Promise.resolve();
+  const API_KEY = "AIzaSyBT1I0vf81TipqrRQ6ZrCfBKK20g1iG5ms"; //DONE: Enter your API Key
+  var elGoogleApi = document.createElement("script");
+  elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`;
+  elGoogleApi.async = true;
+  document.body.append(elGoogleApi);
 
-    return new Promise((resolve, reject) => {
-        elGoogleApi.onload = resolve;
-        elGoogleApi.onerror = () => reject('Google script failed to load');
-    });
+  return new Promise((resolve, reject) => {
+    elGoogleApi.onload = resolve;
+    elGoogleApi.onerror = () => reject("Google script failed to load");
+  });
 }
